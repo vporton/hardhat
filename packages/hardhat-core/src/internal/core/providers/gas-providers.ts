@@ -172,11 +172,16 @@ export class GanacheGasMultiplierProvider extends MultipliedGasEstimationProvide
 
   private async _isGanache(): Promise<boolean> {
     if (this._cachedIsGanache === undefined) {
-      const clientVersion = (await this._wrappedProvider.request({
-        method: "web3_clientVersion",
-      })) as string;
+      try { // fails on Moonbeam Alpha
+        const clientVersion = (await this._wrappedProvider.request({
+          method: "web3_clientVersion",
+        })) as string;
 
-      this._cachedIsGanache = clientVersion.includes("TestRPC");
+        this._cachedIsGanache = clientVersion.includes("TestRPC");
+      }
+      catch(e) {
+        return false;
+      }
     }
 
     return this._cachedIsGanache;
