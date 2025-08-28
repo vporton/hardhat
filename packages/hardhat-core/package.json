@@ -89,7 +89,7 @@
     "debug": "^4.1.1",
     "enquirer": "^2.3.0",
     "env-paths": "^2.2.0",
-    "eth-sig-util": "^2.5.2",
+    "eth-sig-util": "^3.0.1",
     "ethereum-cryptography": "^0.1.2",
     "ethereumjs-abi": "^0.6.8",
     "ethereumjs-account": "^3.0.0",
